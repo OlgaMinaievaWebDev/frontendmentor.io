@@ -1,1 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
+
+body{
+  font-size: '0.9375rem';
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+@theme {
+--color-white-100: #FFFFFF,
+--color-slate-300:#D9E2F1,
+--color-slate-500:#4F5B70,
+--color-slate-900: #26303D,
+--font-outfit: "Outfit", "sans-serif";
+}

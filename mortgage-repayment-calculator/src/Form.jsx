@@ -1,12 +1,12 @@
-import image from './images/illustration-empty.svg'
+import image from '../src/assets/images/illustration-empty.svg'
 
 function Form() {
  return (
-   <form className='flex flex-col gap-4 justify-center items-start w-full'>
-     <button type="button">Clear All</button>
-     <div>
+   <form className='flex flex-col gap-4 items-start w-full text-slate-500'>
+     <button type="button" className='underline'>Clear All</button>
+     <div className='flex flex-col w-full gap-2'>
        <label htmlFor="amount">Mortgage Amount</label>
-       <input type="number" name="amount" id="amount" />
+       <input type="number" name="amount" id="amount"  className='border border-slate-500 h-10 rounded-md'/>
      </div>
      <div>
        <label htmlFor="term">Mortgage Term</label>
@@ -28,7 +28,7 @@ function Form() {
    </fieldset>
    
      <button type='submit'>Calculate Repayments</button>
-     <img src={image} alt="calculation illustration" className="bg-blue-950" />
+     <img src={image} alt="calculation illustration" />
    </form>
  );
 }

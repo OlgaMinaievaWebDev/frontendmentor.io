@@ -1,56 +1,38 @@
 import image from '../src/assets/images/illustration-empty.svg'
 import { DollarSign } from 'lucide-react';
+import InputElement from './InputElement';
 function Form() {
  return (
    <form className="flex flex-col gap-4 items-start w-full text-slate-500">
      <button type="button" className="underline">
        Clear All
-     </button>
-     <div className="flex flex-col w-full gap-2">
-       <label htmlFor="amount">Mortgage Amount</label>
+   </button>
 
-       <div className="flex flex-row items-center border border-slate-500 rounded-md  h-10">
-         <DollarSign className="text-slate-500 bg-slate-200 h-full w-10 p-2 rounded-l-md font-bold" />
-
-         <input
-           type="number"
-           name="amount"
-           id="amount"
-           className="flex-1 outline-none bg-transparent"
-         />
-       </div>
-     </div>
-     <div className="flex flex-col w-full gap-2">
-       <label htmlFor="term">Mortgage Term</label>
-
-       <div className="flex items-center border border-slate-500 rounded-md h-10 overflow-hidden">
-         <input
-           type="number"
-           name="term"
-           id="term"
-           className="flex-1 outline-none bg-transparent px-3 h-full"
-         />
-         <p className="text-slate-500 bg-slate-200 h-full px-3 flex items-center justify-center font-bold">
-           years
-         </p>
-       </div>
-     </div>
-     <div className="flex flex-col w-full gap-2">
-     <label htmlFor="term">Mortgage Term</label>
-
-<div className="flex items-center border border-slate-500 rounded-md h-10 overflow-hidden">
-  <input
+   {/* Input Elements */}
+   <InputElement
+    label="Mortgage Amount"
+    id="amount"
+    name="amount"
     type="number"
-    name="percent"
-    id="percent"
-    className="flex-1 outline-none bg-transparent px-3 h-full"
-  />
-  <p className="text-slate-500 bg-slate-200 h-full px-3 flex items-center justify-center font-bold">
-    %
-     </p>
-     </div>
-     </div>
-
+    icon={<DollarSign size={16} />}
+    iconPosition="left" />
+   
+   <InputElement 
+      label="Mortgage Term"
+      id="term"
+      name="term"
+      type="number"
+      icon="years"
+    iconPosition="right" />
+   
+   <InputElement 
+     label="Interest Rate"
+     id="percent"
+     name="percent"
+     type="number"
+     icon="%"
+     iconPosition="right" />
+    
      <fieldset>
        <legend>Mortgage Type</legend>
        <label htmlFor="repayment">

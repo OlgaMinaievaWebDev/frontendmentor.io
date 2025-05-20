@@ -8,9 +8,10 @@ function Form() {
      </button>
      <div className="flex flex-col w-full gap-2">
        <label htmlFor="amount">Mortgage Amount</label>
-       
+
        <div className="flex flex-row items-center border border-slate-500 rounded-md  h-10">
-         <DollarSign className="text-slate-500 bg-slate-200 h-full w-10 p-2 rounded-l-md " />
+         <DollarSign className="text-slate-500 bg-slate-200 h-full w-10 p-2 rounded-l-md font-bold" />
+
          <input
            type="number"
            name="amount"
@@ -19,13 +20,35 @@ function Form() {
          />
        </div>
      </div>
-     <div>
+     <div className="flex flex-col w-full gap-2">
        <label htmlFor="term">Mortgage Term</label>
-       <input type="number" name="term" id="term" />
+
+       <div className="flex items-center border border-slate-500 rounded-md h-10 overflow-hidden">
+         <input
+           type="number"
+           name="term"
+           id="term"
+           className="flex-1 outline-none bg-transparent px-3 h-full"
+         />
+         <p className="text-slate-500 bg-slate-200 h-full px-3 flex items-center justify-center font-bold">
+           years
+         </p>
+       </div>
      </div>
-     <div>
-       <label htmlFor="percent">Interest rate</label>
-       <input type="number" name="percent" id="percent" step="0.01" />
+     <div className="flex flex-col w-full gap-2">
+     <label htmlFor="term">Mortgage Term</label>
+
+<div className="flex items-center border border-slate-500 rounded-md h-10 overflow-hidden">
+  <input
+    type="number"
+    name="percent"
+    id="percent"
+    className="flex-1 outline-none bg-transparent px-3 h-full"
+  />
+  <p className="text-slate-500 bg-slate-200 h-full px-3 flex items-center justify-center font-bold">
+    %
+     </p>
+     </div>
      </div>
 
      <fieldset>

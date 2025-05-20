@@ -1,5 +1,6 @@
 import image from '../src/assets/images/illustration-empty.svg'
 import { DollarSign } from 'lucide-react';
+import { CalculatorIcon } from 'lucide-react';
 import InputElement from './InputElement';
 function Form() {
  return (
@@ -46,8 +47,15 @@ function Form() {
        </label>
      </fieldset>
 
-     <button type="submit">Calculate Repayments</button>
-     <div className="bg-slate-800 flex flex-col items-center w-full p-6 gap-4">
+     <button
+       type="submit"
+       className="bg-[#d7da2f] hover:bg-lime-300 transition-colors duration-300 p-4 w-full rounded-3xl text-slate-800 text-lg font-semibold flex justify-center items-center gap-2 focus:outline-none focus:ring-2 focus:ring-lime-300 cursor-pointer"
+     >
+       <CalculatorIcon className="w-5 h-5" />
+       Calculate Repayments
+     </button>
+
+     <div className="bg-slate-800 flex flex-col items-center w-full p-6 gap-4 mt-4">
        <img src={image} alt="calculation illustration" className="max-w-xs" />
        <h2 className="text-center text-white text-2xl font-semibold">
          Results shown here

@@ -1,7 +1,11 @@
-import image from '../src/assets/images/illustration-empty.svg'
+
 import { DollarSign } from 'lucide-react';
 import { CalculatorIcon } from 'lucide-react';
 import InputElement from './InputElement';
+import Fieldset from './Fieldset';
+import ResultSection from './ResultSection';
+
+
 function Form() {
  return (
    <form className="flex flex-col gap-4 items-start w-full text-slate-500">
@@ -37,15 +41,14 @@ function Form() {
        iconPosition="right"
      />
 
-     <fieldset>
-       <legend>Mortgage Type</legend>
-       <label htmlFor="repayment">
-         <input type="checkbox" name="repayment" /> Repayment
-       </label>
-       <label htmlFor="interest">
-         <input type="checkbox" name="Interest only" /> Interest Only
-       </label>
-     </fieldset>
+     <Fieldset
+       legend="Mortgage Type"
+       name="mortgageType"
+       options={[
+         { id: "repayment", value: "repayment", label: "Repayment" },
+         { id: "interest", value: "interestOnly", label: "Interest Only" },
+       ]}
+     />
 
      <button
        type="submit"
@@ -55,16 +58,7 @@ function Form() {
        Calculate Repayments
      </button>
 
-     <div className="bg-slate-800 flex flex-col items-center w-full p-6 gap-4 mt-4">
-       <img src={image} alt="calculation illustration" className="max-w-xs" />
-       <h2 className="text-center text-white text-2xl font-semibold">
-         Results shown here
-       </h2>
-       <p className="text-slate-400 text-center text-lg max-w-md">
-         Complete the form and click 'calculate repayments' to see what your
-         monthly repayments would be
-       </p>
-     </div>
+ <ResultSection />
    </form>
  );
 }

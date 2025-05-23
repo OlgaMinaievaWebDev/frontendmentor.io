@@ -1,4 +1,4 @@
-function Fieldset({ legend, name, options }) {
+function Fieldset({ legend, name, options, error }) {
   return (
     <fieldset className="w-full">
       <legend className="mb-2 text-slate-700 font-medium">{legend}</legend>
@@ -20,6 +20,7 @@ function Fieldset({ legend, name, options }) {
           </label>
         ))}
       </div>
+      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
     </fieldset>
   );
 }

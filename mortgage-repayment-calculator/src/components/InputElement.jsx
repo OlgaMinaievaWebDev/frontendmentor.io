@@ -1,11 +1,30 @@
-function InputElement({label, name, id, type="text", icon, iconPosition}) {
- return (
-   <div className="flex flex-col w-full gap-2">
-   <label htmlFor="amount">{label}</label>
+function InputElement({
+  label,
+  name,
+  id,
+  type = "text",
+  step,
+  icon,
+  iconPosition,
+  error,
+}) {
+  // Determine icon color class based on error presence
+  const iconColorClass = error
+    ? "text-white bg-red-600"
+    : "text-slate-500 bg-slate-200";
 
-   <div className={`flex items-center border border-slate-500 rounded-md h-10 overflow-hidden`}>
-        {icon && iconPosition === 'left' && (
-          <div className="text-slate-500 bg-slate-200 h-full px-3 flex items-center justify-center font-bold">
+  return (
+    <div className="flex flex-col w-full gap-2">
+      <label htmlFor={id}>{label}</label>
+
+      <div
+        className={`flex items-center border rounded-md h-10 overflow-hidden
+          ${error ? "border-red-600" : "border-slate-500"}`}
+      >
+        {icon && iconPosition === "left" && (
+          <div
+            className={`${iconColorClass} h-full px-3 flex items-center justify-center font-bold`}
+          >
             {icon}
           </div>
         )}
@@ -13,18 +32,23 @@ function InputElement({label, name, id, type="text", icon, iconPosition}) {
         <input
           type={type}
           name={name}
+          step={step}
           id={id}
           className="flex-1 outline-none bg-transparent px-3 h-full"
         />
 
-        {icon && iconPosition === 'right' && (
-          <div className="text-slate-500 bg-slate-200 h-full px-3 flex items-center justify-center font-bold">
+        {icon && iconPosition === "right" && (
+          <div
+            className={`${iconColorClass} h-full px-3 flex items-center justify-center font-bold`}
+          >
             {icon}
           </div>
         )}
       </div>
-</div>
- );
+
+      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
+    </div>
+  );
 }
 
-export default InputElement
+export default InputElement;

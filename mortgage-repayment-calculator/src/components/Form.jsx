@@ -4,12 +4,56 @@ import { CalculatorIcon } from 'lucide-react';
 import InputElement from './InputElement';
 import Fieldset from './Fieldset';
 import ResultSection from './ResultSection';
+import { useRef, useState } from 'react';
+import { calculateLoan } from '../utils/calculationLoan';
 
 
 function Form() {
+
+  const [errors, setErrors] = useState({})
+  const [result, setResult] = useState(null)
+  const formRef = useRef(null)
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+
+    //use FormData to get entries
+    const formData = new FormData(e.target)
+    const data = Object.fromEntries(formData.entries())
+
+    const newErrors = {}
+    if (!data.amount) newErrors.amount = "Mortgage amount is required";
+    if (!data.term) newErrors.term = "Mortgage term is required";
+    if (!data.percent) newErrors.percent = "Interest rate is required";
+    if (!data.mortgageType)
+      newErrors.mortgageType = "Mortgage type is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      return;
+    }
+
+    setErrors({})
+    
+    const result = calculateLoan(data.amount, data.term, data.percent)
+    setResult(result)
+  }
+  
+  //clear All entries
+  const handleClearAll = () => {
+    if (formRef.current) {
+     formRef.current.reset()
+    }
+    setErrors({})
+  }
+
  return (
-   <form className="flex flex-col gap-4 items-start w-full text-slate-500">
-     <button type="button" className="underline">
+   <form
+     className="flex flex-col gap-4 items-start w-full text-slate-500"
+     onSubmit={handleSubmit}
+     ref={formRef}
+   >
+     <button type="button" className="underline" onClick={handleClearAll}>
        Clear All
      </button>
 
@@ -21,6 +65,7 @@ function Form() {
        type="number"
        icon={<DollarSign size={16} />}
        iconPosition="left"
+       error={errors.amount}
      />
 
      <InputElement
@@ -30,6 +75,7 @@ function Form() {
        type="number"
        icon="years"
        iconPosition="right"
+       error={errors.term}
      />
 
      <InputElement
@@ -37,8 +83,10 @@ function Form() {
        id="percent"
        name="percent"
        type="number"
+       step="0.01"
        icon="%"
        iconPosition="right"
+       error={errors.percent}
      />
 
      <Fieldset
@@ -48,6 +96,7 @@ function Form() {
          { id: "repayment", value: "repayment", label: "Repayment" },
          { id: "interest", value: "interestOnly", label: "Interest Only" },
        ]}
+       error={errors.mortgageType}
      />
 
      <button
@@ -58,7 +107,7 @@ function Form() {
        Calculate Repayments
      </button>
 
- <ResultSection />
+     <ResultSection result={result} />
    </form>
  );
 }

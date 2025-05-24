@@ -35,7 +35,13 @@ function Form() {
 
     setErrors({})
     
-    const result = calculateLoan(data.amount, data.term, data.percent)
+    const result = calculateLoan(
+      data.amount,
+      data.term,
+      data.percent,
+      data.mortgageType
+    );
+
     setResult(result)
   }
   
@@ -45,6 +51,7 @@ function Form() {
      formRef.current.reset()
     }
     setErrors({})
+    setResult(null)
   }
 
  return (
@@ -101,6 +108,7 @@ function Form() {
 
      <button
        type="submit"
+       disabled={Object.keys(errors).length > 0}
        className="bg-[#d7da2f] hover:bg-lime-300 transition-colors duration-300 p-4 w-full rounded-3xl text-slate-800 text-lg font-semibold flex justify-center items-center gap-2 focus:outline-none focus:ring-2 focus:ring-lime-300 cursor-pointer"
      >
        <CalculatorIcon className="w-5 h-5" />

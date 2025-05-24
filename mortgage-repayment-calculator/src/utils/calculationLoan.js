@@ -1,10 +1,23 @@
-export function calculateLoan(amount, years, percent) {
+export function calculateLoan(
+  amount,
+  years,
+  percent,
+  mortgageType = "repayment"
+) {
   const principal = parseFloat(amount);
-  const interestRate = parseFloat(percent) / 100 / 12; // monthly rate
+  const interestRate = parseFloat(percent) / 100 / 12; // monthly
   const numberOfPayments = parseInt(years) * 12;
 
+  if (mortgageType === "interestOnly") {
+    const monthly = principal * interestRate;
+    const total = monthly * numberOfPayments;
+    return {
+      monthlyPayment: monthly.toFixed(2),
+      totalPayment: total.toFixed(2),
+    };
+  }
+
   if (interestRate === 0) {
-    // No interest case
     const monthly = principal / numberOfPayments;
     return {
       monthlyPayment: monthly.toFixed(2),

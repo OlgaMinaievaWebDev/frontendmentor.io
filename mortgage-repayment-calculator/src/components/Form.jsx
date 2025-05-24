@@ -54,6 +54,17 @@ function Form() {
     setResult(null)
   }
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    // Clear error for the field once valid input is entered
+    if (value && errors[name]) {
+      setErrors((prevErrors) => {
+        const updatedErrors = { ...prevErrors };
+        delete updatedErrors[name];
+        return updatedErrors;
+      });
+    }
+  };
  return (
    <form
      className="flex flex-col gap-4 items-start w-full text-slate-500"
@@ -73,6 +84,7 @@ function Form() {
        icon={<DollarSign size={16} />}
        iconPosition="left"
        error={errors.amount}
+       onChange={handleInputChange}
      />
 
      <InputElement
@@ -83,6 +95,7 @@ function Form() {
        icon="years"
        iconPosition="right"
        error={errors.term}
+       onChange={handleInputChange}
      />
 
      <InputElement
@@ -94,6 +107,7 @@ function Form() {
        icon="%"
        iconPosition="right"
        error={errors.percent}
+       onChange={handleInputChange}
      />
 
      <Fieldset

@@ -7,8 +7,8 @@ function InputElement({
   icon,
   iconPosition,
   error,
+  onChange,
 }) {
-  // Determine icon color class based on error presence
   const iconColorClass = error
     ? "text-white bg-red-600"
     : "text-slate-500 bg-slate-200";
@@ -34,6 +34,7 @@ function InputElement({
           name={name}
           step={step}
           id={id}
+          onChange={onChange}
           className="flex-1 outline-none bg-transparent px-3 h-full"
         />
 

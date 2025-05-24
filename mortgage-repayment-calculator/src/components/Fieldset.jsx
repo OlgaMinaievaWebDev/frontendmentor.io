@@ -6,7 +6,7 @@ function Fieldset({ legend, name, options, error }) {
         {options.map((option) => (
           <label
             key={option.id}
-            htmlFor={option.id}
+            htmlFor={option.value}
             className="flex items-center border border-slate-500 rounded-md h-10 px-3 gap-2 cursor-pointer "
           >
             <input

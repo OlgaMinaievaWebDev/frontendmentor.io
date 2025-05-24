@@ -1,53 +1,49 @@
+// InputElement.jsx (or .js)
+
 function InputElement({
   label,
-  name,
   id,
-  type = "text",
-  step,
+  name,
+  type,
   icon,
   iconPosition,
   error,
   onChange,
+  className = "", // accept className prop
+  ...rest
 }) {
-  const iconColorClass = error
-    ? "text-white bg-red-600"
-    : "text-slate-500 bg-slate-200";
-
   return (
-    <div className="flex flex-col w-full gap-2">
-      <label htmlFor={id}>{label}</label>
-
-      <div
-        className={`flex items-center border rounded-md h-10 overflow-hidden
-          ${error ? "border-red-600" : "border-slate-500"}`}
-      >
+    <div className={`flex flex-col w-full ${className}`}>
+      <label htmlFor={id} className="mb-1 font-medium text-slate-600">
+        {label}
+      </label>
+      <div className="relative">
         {icon && iconPosition === "left" && (
-          <div
-            className={`${iconColorClass} h-full px-3 flex items-center justify-center font-bold`}
-          >
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
             {icon}
-          </div>
+          </span>
         )}
-
         <input
-          type={type}
-          name={name}
-          step={step}
           id={id}
+          name={name}
+          type={type}
           onChange={onChange}
-          className="flex-1 outline-none bg-transparent px-3 h-full"
+          {...rest}
+          className={`w-full border rounded-md p-2 pl-${
+            iconPosition === "left" ? "8" : "3"
+          } pr-${
+            iconPosition === "right" ? "8" : "3"
+          } focus:outline-none focus:ring-2 focus:ring-lime-400 ${
+            error ? "border-red-500" : "border-gray-300"
+          }`}
         />
-
         {icon && iconPosition === "right" && (
-          <div
-            className={`${iconColorClass} h-full px-3 flex items-center justify-center font-bold`}
-          >
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
             {icon}
-          </div>
+          </span>
         )}
       </div>
-
-      {error && <p className="text-red-600 text-sm mt-1">{error}</p>}
+      {error && <p className="text-red-500 mt-1 text-sm">{error}</p>}
     </div>
   );
 }

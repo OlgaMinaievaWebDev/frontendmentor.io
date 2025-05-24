@@ -3,7 +3,7 @@ import { formatCurrency } from "../utils/formatCurrency";
 function ResultSection({ result }) {
   if(!result) {
   return (
-    <div className="bg-slate-800 flex flex-col items-center w-full p-6 gap-4 mt-4 h-full rounded-bl-[50px]">
+    <div className="bg-slate-800 flex flex-col items-center w-full p-6 gap-4 h-full rounded-bl-[50px]">
       <img src={image} alt="calculation illustration" className="max-w-xs" />
       <h2 className="text-center text-white text-2xl font-semibold">
         Results shown here

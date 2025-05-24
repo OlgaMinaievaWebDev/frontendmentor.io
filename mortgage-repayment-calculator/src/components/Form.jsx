@@ -76,28 +76,32 @@ function Form({ setResult }) {
         onChange={handleInputChange}
       />
 
-      <InputElement
-        label="Mortgage Term"
-        id="term"
-        name="term"
-        type="number"
-        icon="years"
-        iconPosition="right"
-        error={errors.term}
-        onChange={handleInputChange}
-      />
+      <div className="w-full flex flex-col md:flex-row md:gap-4">
+        <InputElement
+          label="Mortgage Term"
+          id="term"
+          name="term"
+          type="number"
+          icon="years"
+          iconPosition="right"
+          error={errors.term}
+          onChange={handleInputChange}
+          className="md:flex-1"
+        />
 
-      <InputElement
-        label="Interest Rate"
-        id="percent"
-        name="percent"
-        type="number"
-        step="0.01"
-        icon="%"
-        iconPosition="right"
-        error={errors.percent}
-        onChange={handleInputChange}
-      />
+        <InputElement
+          label="Interest Rate"
+          id="percent"
+          name="percent"
+          type="number"
+          step="0.01"
+          icon="%"
+          iconPosition="right"
+          error={errors.percent}
+          onChange={handleInputChange}
+          className="md:flex-1"
+        />
+      </div>
 
       <Fieldset
         legend="Mortgage Type"
@@ -112,7 +116,7 @@ function Form({ setResult }) {
       <button
         type="submit"
         disabled={Object.keys(errors).length > 0}
-        className="bg-[#d7da2f] hover:bg-lime-300 transition-colors duration-300 p-4 w-full rounded-3xl text-slate-800 text-lg font-semibold flex justify-center items-center gap-2 focus:outline-none focus:ring-2 focus:ring-lime-300 cursor-pointer"
+        className="bg-[#d7da2f] hover:bg-lime-300 transition-colors duration-300 p-4 w-full rounded-3xl text-slate-800 text-lg font-semibold flex justify-center items-center gap-2 focus:outline-none focus:ring-2 focus:ring-lime-300 cursor-pointer md:w-[80%]"
       >
         <CalculatorIcon className="w-5 h-5" />
         Calculate Repayments

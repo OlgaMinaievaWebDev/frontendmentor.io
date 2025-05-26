@@ -11,7 +11,7 @@ export const productData = [
     price: 6.5,
   },
   {
-    image: {
+    image: { 
       thumbnail: "./assets/images/image-creme-brulee-thumbnail.jpg",
       mobile: "./assets/images/image-creme-brulee-mobile.jpg",
       tablet: "./assets/images/image-creme-brulee-tablet.jpg",

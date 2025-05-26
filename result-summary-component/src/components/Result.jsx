@@ -7,7 +7,7 @@ function Result() {
     <p className=" text-indigo-300"> of 100</p>
    </div>
     <p className="text-3xl font-bold">Great</p>
-    <p className="text-lg">You scored higher than 65% of the people who have taken these tests</p>
+    <p className="text-lg text-indigo-300">You scored higher than 65% of the people who have taken these tests</p>
   </div>
  )
 }

@@ -3,7 +3,6 @@ import cartIcon from "../assets/images/icon-add-to-cart.svg";
 
 function DessertCard() {
  return (
-   
      <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
        {productData.map((product, index) => (
          <li key={index} className="flex flex-col items-start">

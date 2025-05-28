@@ -9,8 +9,16 @@ const initialState = {
 }
 
 function cartReducer(state, action) {
- 
+ switch (action.type) {
+  case "ADD_TO_CART":
+   return {
+    ...state,
+    cartItems: [...state.cartItems, action.payload],
+    totalAmount: state.totalAmount + action.payload.price * action.payload.quantity,
+    totalQuantity: state.totalQuantity + action.payload.quantity,
+   }
 
+ }
 }
 
 
@@ -26,3 +34,5 @@ export const CartProvider = ({ children }) => {
  </CartContext.Provider> 
 )
 }
+
+export default CartContext;

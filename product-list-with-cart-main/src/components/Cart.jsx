@@ -40,7 +40,7 @@ function Cart() {
             </button>
           </div>
         </li>
-          )}
+          ))}
 
         {/* Item 2 */}
         <li>

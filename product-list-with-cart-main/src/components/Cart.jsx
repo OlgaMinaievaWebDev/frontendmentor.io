@@ -24,13 +24,14 @@ function Cart() {
 
       <ul className="flex flex-col gap-4">
         {/* Item 1 */}
-        <li>
+        {cartItems.map((item, index) => (
+        <li key={index}>
           <div className="flex justify-between items-start border-b border-slate-200 pb-2">
             <div>
-              <p className="font-semibold text-sm">Classic Tiramisu</p>
+                <p className="font-semibold text-sm">{item.name}</p>
               <div className="flex items-center gap-4 text-sm mt-1">
                 <p className="text-amber-800 font-semibold">1x</p>
-                <p>$5.50</p>
+                  <p>{ item.price}</p>
                 <p>$5.50</p>
               </div>
             </div>
@@ -39,6 +40,7 @@ function Cart() {
             </button>
           </div>
         </li>
+          )}
 
         {/* Item 2 */}
         <li>

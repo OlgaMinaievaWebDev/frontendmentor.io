@@ -9,17 +9,60 @@ const initialState = {
 }
 
 function cartReducer(state, action) {
- switch (action.type) {
-  case "ADD_TO_CART":
-   return {
-    ...state,
-    cartItems: [...state.cartItems, action.payload],
-    totalAmount: state.totalAmount + action.payload.price * action.payload.quantity,
-    totalQuantity: state.totalQuantity + action.payload.quantity,
-   }
+  switch (action.type) {
+    case "ADD_TO_CART":
+      const item = action.payload;
+      const existingItem = state.cartItems.find((i) => i.name === item.name);
 
- }
+      let updatedCart;
+
+      if (existingItem) {
+        updatedCart = state.cartItems.map((i) =>
+          i.name === item.name
+            ? { ...i, quantity: i.quantity + item.quantity }
+            : i
+        );
+      } else {
+        updatedCart = [...state.cartItems, { ...item, quantity: 1 }];
+      }
+
+      const totalAmount = updatedCart.reduce(
+        (sum, i) => sum + i.price * i.quantity,
+        0
+      );
+      const totalQuantity = updatedCart.reduce((sum, i) => sum + i.quantity, 0);
+
+      return {
+        ...state,
+        cartItems: updatedCart, // ✅ FIXED HERE
+        totalAmount,
+        totalQuantity,
+      };
+
+    case "REMOVE_ITEM_COMPLETELY": {
+      const updatedCartItems = state.cartItems.filter(
+        (item) => item.name !== action.payload.name
+      );
+      const totalAmount = updatedCartItems.reduce(
+        (sum, i) => sum + i.price * i.quantity,
+        0
+      );
+      const totalQuantity = updatedCartItems.reduce(
+        (sum, i) => sum + i.quantity,
+        0
+      );
+      return {
+        ...state,
+        cartItems: updatedCartItems,
+        totalAmount,
+        totalQuantity,
+      };
+    }
+    default:
+      return state;
+  }
 }
+
 
 
 export const CartProvider = ({ children }) => {

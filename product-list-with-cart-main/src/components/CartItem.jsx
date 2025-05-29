@@ -1,4 +1,13 @@
-function CartItem({index, item}) {
+import { useContext } from "react";
+import CartContext from "../context/CartContext";
+
+function CartItem({ index, item }) {
+ 
+const { dispatch } = useContext(CartContext);
+ const handleRemoveItem = (item) => {
+   dispatch({ type: "REMOVE_ITEM_COMPLETELY", payload: item });
+ };
+
  return (
    <>
      <li key={index}>
@@ -11,7 +20,9 @@ function CartItem({index, item}) {
              <p>{(item.price * item.quantity).toFixed(2)}</p>
            </div>
          </div>
-         <button className="w-5 h-5 rounded-full border border-slate-500 flex justify-center items-center hover:font-bold text-xs">
+     <button
+      onClick={() => handleRemoveItem(item)}
+      className="w-5 h-5 rounded-full border border-slate-500 flex justify-center items-center hover:font-bold text-xs">
            X
          </button>
        </div>

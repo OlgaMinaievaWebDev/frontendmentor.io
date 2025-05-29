@@ -7,7 +7,7 @@ function Cart() {
   const { state, dispatch } = useContext(CartContext);
   const{ cartItems, totalAmount, totalQuantity } = state;
   
-  
+
   if (cartItems.length === 0) {
     // If the cart is empty, show the empty cart message
     return (
@@ -44,6 +44,7 @@ function Cart() {
 
       {/* Confirm Order Button */}
       <button
+      
         className="
          bg-orange-700 text-white font-medium 
          rounded-full px-6 py-2 

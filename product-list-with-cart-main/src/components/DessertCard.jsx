@@ -1,7 +1,14 @@
 import { productData } from "../data";
 import cartIcon from "../assets/images/icon-add-to-cart.svg";
+import {useContext} from "react"
+import CartContext from "../context/CartContext";
 
 function DessertCard() {
+
+  const { dispatch } = useContext(CartContext);
+  const handleAddToCart = (product) => {
+    dispatch({ type: "ADD_TO_CART", payload: { ...product, quantity: 1 } });
+  };
  return (
    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
      {productData.map((product, index) => (
@@ -20,6 +27,7 @@ function DessertCard() {
              />
            </picture>
            <button
+             onClick={() => handleAddToCart(product)}
              className="
     absolute -bottom-5 left-1/2 transform -translate-x-1/2 
     border border-amber-800 rounded-3xl 

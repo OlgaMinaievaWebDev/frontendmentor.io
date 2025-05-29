@@ -7,9 +7,7 @@ function Cart() {
   const { state, dispatch } = useContext(CartContext);
   const{ cartItems, totalAmount, totalQuantity } = state;
   
-  const addItemToCart = (item) => {
-    dispatch({ type: 'ADD_TO_CART', payload: item });
-  }
+  
   if (cartItems.length === 0) {
     // If the cart is empty, show the empty cart message
     return (

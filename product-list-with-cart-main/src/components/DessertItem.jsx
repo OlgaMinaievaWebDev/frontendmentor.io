@@ -28,35 +28,38 @@ function DessertItem({product, index}) {
             />
             <source media="(min-width: 640px)" srcSet={product.image.tablet} />
             <img
-              src={product.image.mobile} 
+              src={product.image.mobile}
               alt={product.name}
               className="w-full h-full object-cover rounded-xl"
             />
           </picture>
-     {itemInCart ?  (
-                <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-white px-4 py-2 rounded-3xl flex items-center gap-2 shadow z-10">
-                  <button
-                    className="text-xl px-2"
-                    onClick={() => handleRemoveItem(product)}
-                  >
-                    -
-                  </button>
-                  <span className="text-sm font-semibold">{itemInCart.quantity}</span>
-                  <button
-                    className="text-xl px-2"
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    +
-                  </button>
-                </div>
-              ) : (
-                <button
-                  className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 border border-amber-800 rounded-3xl py-2 px-6 text-sm bg-white z-10 flex justify-center items-center gap-2 shadow"
-                  onClick={() => handleAddToCart(product)}
-                >
-                  <img src={cartIcon} alt="cart icon" className="w-4 h-4" />
-                  Add to Cart
-                </button>)}
+          {itemInCart ? (
+            <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-3xl flex items-center gap-6 shadow z-10 bg-orange-600 text-white">
+              <button
+                className="text-md px-2 rounded-full border"
+                onClick={() => handleRemoveItem(product)}
+              >
+                -
+              </button>
+              <span className="text-sm font-semibold">
+                {itemInCart.quantity}
+              </span>
+              <button
+                className="text-md px-2 rounded-full border"
+                onClick={() => handleAddToCart(product)}
+              >
+                +
+              </button>
+            </div>
+          ) : (
+            <button
+              className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 border border-amber-800 rounded-3xl py-2 px-6 text-sm bg-white z-10 flex justify-center items-center gap-2 shadow"
+              onClick={() => handleAddToCart(product)}
+            >
+              <img src={cartIcon} alt="cart icon" className="w-4 h-4" />
+              Add to Cart
+            </button>
+          )}
         </div>
 
         <div className="px-4 pt-6 pb-4 text-center sm:text-left">

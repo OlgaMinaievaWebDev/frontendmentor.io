@@ -80,6 +80,16 @@ function cartReducer(state, action) {
        totalQuantity,
      };
    }
+
+   case "CLEAR_CART":
+     return {
+       ...state,
+       cartItems: [],
+       totalAmount: 0,
+       totalQuantity: 0,
+     };
+   
+   
    default:
      return state;
  }

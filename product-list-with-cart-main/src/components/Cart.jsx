@@ -2,9 +2,23 @@ import { useContext } from 'react';
 import emptyCartImage from '../assets/images/illustration-empty-cart.svg'
 import CartContext from '../context/CartContext';
 import CartItem from './CartItem';
-function Cart({ setShowModal, showTitle = true, showNote = true }) {
+
+
+function Cart({
+  setShowModal,
+  setOrderConfirmed,
+  showTitle = true,
+  showNote = true,
+}) {
+
   const { state } = useContext(CartContext);
   const { cartItems, totalAmount, totalQuantity } = state;
+  const handleConfirmed = () => {
+    setShowModal(true);
+    setOrderConfirmed(true);
+    console.log("setOrderConfirmed", setOrderConfirmed);
+
+  }
 
   if (cartItems.length === 0) {
     return (
@@ -51,7 +65,7 @@ function Cart({ setShowModal, showTitle = true, showNote = true }) {
       {/* Conditionally render confirm button */}
       {setShowModal && (
         <button
-          onClick={() => setShowModal(true)}
+          onClick={handleConfirmed}
           className="bg-orange-700 text-white font-medium rounded-full px-6 py-2 hover:bg-orange-800 transition text-sm md:text-base mt-2"
         >
           Confirm Order

@@ -20,3 +20,18 @@ https://frontendmentor-io-xwht.vercel.app/
   <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
   <img src="https://img.shields.io/badge/Vite-B73BFE?logo=vite&logoColor=FFD62E" alt="Vite">
 </div>
+
+## Project Structure 
+src/
+├── components/
+│   ├── Balance.jsx        # Balance display component
+│   ├── Chart.jsx          # Main chart visualization
+│   └── SpendingCard.jsx   # Wrapper component
+├── data/
+│   └── spendingData.json  # Weekly spending data
+├── assets/
+│   └── logo.svg           # Brand logo
+└── App.jsx                # Main application entry
+
+## 📜 License
+MIT License 

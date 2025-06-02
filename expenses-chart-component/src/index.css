@@ -13,9 +13,9 @@ html {
 }
 
 @theme {
- --color-brown-dark: hsl(25, 47%, 15%)
- --color-brown-light: hsl(28, 10%, 53%)
- --color-red-light: hsl(26, 66%, 93%)
- --color-red-intense: hsl(10, 79%, 65%)
---color-blue-nice: hsl(186, 34%, 65%)
+ --color-brown-dark: hsl(25, 47%, 15%);
+ --color-brown-light: hsl(28, 10%, 53%);
+ --color-red-light: hsl(26, 66%, 93%);
+ --color-red-intense: hsl(10, 79%, 65%);
+ --color-blue-nice: hsl(186, 34%, 65%);
 }

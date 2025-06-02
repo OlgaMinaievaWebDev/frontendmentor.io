@@ -1,7 +1,11 @@
+import Balance from "./components/Balance";
+import Card from "./components/Card";
+
 function App() {
   return (
-    <div>
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <div className="max-w-[600px] mx-auto p-4 flex flex-col gap-4">
+      <Balance />
+      <Card/>
     </div>
   );
 }
